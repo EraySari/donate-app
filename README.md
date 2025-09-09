@@ -27,3 +27,8 @@ This project was developed as my graduation project, combining **real-world prob
 ---
 
 ## 📸 Screenshots
+
+### 👤 USER SIDE 
+
+-  🛒 Product List
+![User Product List](./assets/user_productList.gif)
