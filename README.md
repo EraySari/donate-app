@@ -32,3 +32,23 @@ This project was developed as my graduation project, combining **real-world prob
 
 -  🛒 Product List
 ![User Product List](donate-ui/./assets/user_ProductList.gif)
+
+-  🔍 Elastic Search and Filter
+![Elastic Search and Filter](donate-ui/./assets/search_filter.gif)
+
+-  🛒 Cart Update - ✅ Order Creation
+![Cart Update - Order Creation](donate-ui/./assets/order.gif)
+
+-  📑 My Orders
+![My Orders](donate-ui/./assets/orders.gif)
+
+-  🏬 Market Creation
+![Market Creation](donate-ui/./assets/createMarket.gif)
+![Market Creation](donate-ui/./assets/createMarket2.gif)
+
+-  ➕ Add Product
+![Add Product](donate-ui/./assets/addProduct.gif)
+![Add Product](donate-ui/./assets/addProduct2.gif)
+
+- 🏢 Organization Application
+![Organization Application](donate-ui/./assets/applyOrg.gif)
