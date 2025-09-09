@@ -31,4 +31,4 @@ This project was developed as my graduation project, combining **real-world prob
 ### 👤 USER SIDE 
 
 -  🛒 Product List
-![User Product List](./assets/user_productList.gif)
+![User Product List](./assets/user_ProductList.gif)
