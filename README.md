@@ -40,27 +40,33 @@ This project was developed as my graduation project, combining **real-world prob
 
 ### 👤 USER SIDE 
 
--  🛒 Product List
+- 🛒 **Product List**  
+  Products are listed with their prices and can be added to the cart. 
 ![User Product List](donate-ui/./assets/user_ProductList.gif)
 
--  🔍 Elastic Search and Filter
+- 🔍 **Elastic Search and Filter**  
+  Users can search for specific products and, if desired, filter the results to show only those that are free.  
 ![Elastic Search and Filter](donate-ui/./assets/search_filter.gif)
 
--  🛒 Cart Update - ✅ Order Creation
+- 🛒 **Cart Update – ✅ Order Creation**  
+  Users can update product quantities in the cart, remove items if needed, view applied discounts and the total payable amount, and finally create an order. The product stock is also updated automatically when an order is placed.   
 ![Cart Update - Order Creation](donate-ui/./assets/order.gif)
 
--  📑 My Orders
+- 📑 **My Orders**  
+  Users can view their previous orders, check the details of each order, and access the invoice.  
 ![My Orders](donate-ui/./assets/orders.gif)
 
 -  🏬 Market Creation
 ![Market Creation](donate-ui/./assets/createMarket.gif)
 ![Market Creation](donate-ui/./assets/createMarket2.gif)
 
--  ➕ Add Product
+- ➕ **Markets and Add Product**  
+  Users can add products to their markets, view all listed products, and see the number of items sold. 
 ![Add Product](donate-ui/./assets/addProduct.gif)
 ![Add Product](donate-ui/./assets/addProduct2.gif)
 
-- 🏢 Organization Application
+- 🏢 **Organization Application**
+-   A user with the *user* role can apply to become an organization. The application goes to the admin for approval. Once approved, the user becomes an organization and gains access only to free products.  
 ![Organization Application](donate-ui/./assets/applyOrg.gif)
 
 ### 🛡️ Admin Side
@@ -68,7 +74,7 @@ This project was developed as my graduation project, combining **real-world prob
 - ✅❌ **Organization Applications (Approve / Reject) & View Organizations**  
   The admin can review incoming organization applications, approve or reject them, and view the list of existing organizations.  
 
-  ![Organization Applications](./assets/adminApply.gif)
+  ![Organization Applications (Approve / Reject)](./assets/adminApply.gif)
 
 ### 🏢 Organization Side
 
