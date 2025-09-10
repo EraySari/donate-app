@@ -6,6 +6,16 @@ Other users can purchase these discounted products at lower cost, while organiza
 
 This project was developed as my graduation project, combining **real-world problem solving (food waste reduction)** with **modern web technologies**.  
 
+🛠️ Development Status
+
+⚠️ Note: The front-end part of the project is not fully completed yet.
+
+- Products are currently using the same image.
+
+- There are some design gaps and improvements to be made.
+
+- New updates will be added in upcoming commits.
+
 ---
 
 ## 🧩 Features
