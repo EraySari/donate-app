@@ -63,7 +63,7 @@ This project was developed as my graduation project, combining **real-world prob
 - ➕ **Markets and Add Product**  
   Users can add products to their markets, view all listed products, and see the number of items sold. 
 ![Add Product](donate-ui/./assets/addProduct.gif)
-![Add Product](donate-ui/./assets/addProduct2.gif)
+![Add Product](donate-ui/./assets/marketProductAdd.gif)
 
 - 🏢 **Organization Application**
 -   A user with the *user* role can apply to become an organization. The application goes to the admin for approval. Once approved, the user becomes an organization and gains access only to free products.  
