@@ -74,16 +74,16 @@ This project was developed as my graduation project, combining **real-world prob
 - ✅❌ **Organization Applications (Approve / Reject) & View Organizations**  
   The admin can review incoming organization applications, approve or reject them, and view the list of existing organizations.  
 
-  ![Organization Applications (Approve / Reject)](./assets/adminApply.gif)
+  ![Organization Applications (Approve / Reject)](donate-ui/./assets/adminApply.gif)
 
 ### 🏢 Organization Side
 
 - 🛒 **View Products**  
   When an organization logs in, clicking on the products shows only those with a price of 0.  
 
-  ![Organization Zero Price Products](./assets/orgProducts.gif)
+  ![Organization Zero Price Products](donate-ui/./assets/orgProducts.gif)
 
 - 📑 **Order History & Invoice Download**  
   Organizations can view their past orders and download the corresponding invoices.  
 
-  ![Organization Orders & Invoices](./assets/orgOrders.gif)
+  ![Organization Orders & Invoices](donate-ui/./assets/orgOrders.gif)
