@@ -62,3 +62,22 @@ This project was developed as my graduation project, combining **real-world prob
 
 - 🏢 Organization Application
 ![Organization Application](donate-ui/./assets/applyOrg.gif)
+
+### 🛡️ Admin Side
+
+- ✅❌ **Organization Applications (Approve / Reject) & View Organizations**  
+  The admin can review incoming organization applications, approve or reject them, and view the list of existing organizations.  
+
+  ![Organization Applications](./assets/adminApply.gif)
+
+### 🏢 Organization Side
+
+- 🛒 **View Products**  
+  When an organization logs in, clicking on the products shows only those with a price of 0.  
+
+  ![Organization Zero Price Products](./assets/orgProducts.gif)
+
+- 📑 **Order History & Invoice Download**  
+  Organizations can view their past orders and download the corresponding invoices.  
+
+  ![Organization Orders & Invoices](./assets/orgOrders.gif)
