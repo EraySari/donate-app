@@ -10,6 +10,7 @@ import { ToastCard } from "../Toast-Notification/ToastCard";
 import { BsBasketFill } from "react-icons/bs";
 import { hasPermission } from "../utils/permissionUtils";
 import { ExpiryBadge } from "./ExpiryBadge";
+import { DiscountBadge } from "./DiscountBadge";
 
 interface ProductItemProps {
   id: number;
@@ -88,15 +89,10 @@ const ProductItem: React.FC<ProductItemProps> = ({
             </h5>
 
             <div className="flex justify-between items-center">
-              {discountPrice === 0 ? (
-                <span className="inline-flex items-center gap-1 rounded-md bg-emerald-600 px-2.5 py-1 text-xs font-semibold text-white shadow-sm ring-1 ring-inset ring-emerald-700/30">
-                  Free
-                </span>
-              ) : (
-                <span className="inline-flex items-center gap-1 rounded-md bg-amber-600 px-2.5 py-1 text-xs font-semibold text-white shadow-sm ring-1 ring-inset ring-amber-700/30">
-                  {`${(normalPrice - discountPrice).toFixed(2)}₺`} Save
-                </span>
-              )}
+              <DiscountBadge
+                discount={discountPrice}
+                normalPrice={normalPrice}
+              />
               <p>{<ExpiryBadge date={expiryDate} />}</p>
             </div>
           </div>

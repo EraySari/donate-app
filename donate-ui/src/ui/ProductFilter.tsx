@@ -1,5 +1,10 @@
 import { ArrowDown01, ArrowUp01, PackageSearch, X } from "lucide-react";
+import { CategorySelect } from "./CategorySelect";
+import { useAppDispatch, useAppSelector } from "../store";
+import { getCategory } from "../store/Category/thunks";
+import { useEffect, useState } from "react";
 
+type CategoryState = null | { id: number; name: string };
 type Props = {
   searchTerm: string;
   setSearchTerm: (v: string) => void;
@@ -12,6 +17,8 @@ type Props = {
   setSort: (
     s: { field: "discountedPrice"; sortKey: "asc" | "desc" } | null
   ) => void;
+  category: CategoryState;
+  setCategory: (v: CategoryState) => void;
   className?: string;
 };
 
@@ -22,6 +29,8 @@ export default function ProductFilter({
   setDonateProducts,
   sort,
   setSort,
+  category,
+  setCategory,
   className,
 }: Props) {
   const clearAll = () => {
@@ -29,8 +38,16 @@ export default function ProductFilter({
     setDonateProducts(false);
   };
 
+  const dispatch = useAppDispatch();
+
+  useEffect(() => {
+    dispatch(getCategory());
+  }, []);
+
+  const { categories } = useAppSelector((state) => state.Category);
+
   return (
-    <aside className={className ?? "sticky top-0"}>
+    <div className={className ?? "sticky top-0"}>
       <div className="rounded-2xl border border-gray-200 bg-white p-4 md:p-5 shadow-sm">
         <div className="mb-4 flex items-center justify-between">
           <h3 className="text-base font-semibold text-gray-800">Filters</h3>
@@ -124,7 +141,7 @@ export default function ProductFilter({
           </div>
         </div>
 
-        <div className="mb-1">
+        <div className="mb-4">
           <label className="flex items-center gap-3 cursor-pointer select-none">
             <span className="relative inline-flex h-5 w-9 items-center">
               <input
@@ -147,7 +164,17 @@ export default function ProductFilter({
             Only show products available for donation.
           </p>
         </div>
+
+        <div className="mb-1">
+          <CategorySelect
+            options={categories}
+            value={category}
+            onChangeCategory={(option: CategoryState) => {
+              setCategory(option);
+            }}
+          />
+        </div>
       </div>
-    </aside>
+    </div>
   );
 }

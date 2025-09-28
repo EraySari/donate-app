@@ -38,11 +38,13 @@ const Products = () => {
 
   type SortKeyArg = "asc" | "desc";
   type SortState = null | { field: "discountedPrice"; sortKey: SortKeyArg };
+  type CategoryState = null | { id: number; name: string };
 
   const [searchTerm, setSearchTerm] = useState("");
   const [pageNumber, setPageNumber] = useState(0);
   const [sort, setSort] = useState<SortState>(null);
   const [donateProducts, setDonateProducts] = useState(false);
+  const [category, setCategory] = useState<CategoryState | null>(null);
 
   const handlePageClick = useCallback((index: number) => {
     setPageNumber(index);
@@ -60,6 +62,11 @@ const Products = () => {
 
   const handleSortByPrice = useCallback((sort: SortState) => {
     setSort(sort);
+    setPageNumber(0);
+  }, []);
+
+  const handleSelectCategory = useCallback((category: CategoryState | null) => {
+    setCategory(category);
     setPageNumber(0);
   }, []);
 
@@ -121,6 +128,15 @@ const Products = () => {
       });
     }
 
+    if (category) {
+      tags.push({
+        key: "category",
+        label: `${category.name}`,
+        className: "bg-purple-600",
+        onRemove: () => handleSelectCategory(null),
+      });
+    }
+
     return tags;
   }, [
     donateProducts,
@@ -129,10 +145,12 @@ const Products = () => {
     handleSearchTerm,
     sort,
     handleSortByPrice,
+
+    category,
   ]);
 
+  // backend tarafinda her filter icin ayri bir api ayarlandigi icin böyle her filter icin ayri apiye istek atmam lazim
   useEffect(() => {
-    console.log("a");
     if (debouncedSearchTerm.trim() !== "" && canViewProducts) {
       dispatch(searchProduct(debouncedSearchTerm));
     } else {
@@ -149,6 +167,7 @@ const Products = () => {
               getAllProducts({
                 page: pageNumber,
                 sort: sort ? `${sort?.field},${sort?.sortKey}` : undefined,
+                categoryId: category ? category.id : undefined,
               })
             );
           }
@@ -162,16 +181,14 @@ const Products = () => {
     canViewProducts,
     canViewDonated,
     sort,
+    category,
   ]);
 
-  console.log(debouncedSearchTerm);
   const showResults = useMemo(
     () => (debouncedSearchTerm ? searchProducts : productsArr),
     [debouncedSearchTerm, searchProducts, productsArr]
   );
 
-  console.log(showResults);
-  console.log(loading);
   return (
     <div className="group-data-[sidebar-size=lg]:ltr:md:ml-vertical-menu group-data-[sidebar-size=lg]:rtl:md:mr-vertical-menu group-data-[sidebar-size=md]:ltr:ml-vertical-menu-md group-data-[sidebar-size=md]:rtl:mr-vertical-menu-md group-data-[sidebar-size=sm]:ltr:ml-vertical-menu-sm group-data-[sidebar-size=sm]:rtl:mr-vertical-menu-sm pt-[calc(theme('spacing.header')_*_1)] pb-[calc(theme('spacing.header')_*_0.8)] px-4 group-data-[navbar=bordered]:pt-[calc(theme('spacing.header')_*_1.3)] group-data-[navbar=hidden]:pt-0 group-data-[layout=horizontal]:mx-auto group-data-[layout=horizontal]:max-w-screen-2xl group-data-[layout=horizontal]:group-data-[sidebar-size=lg]:ltr:md:ml-auto group-data-[layout=horizontal]:group-data-[sidebar-size=lg]:rtl:md:mr-auto group-data-[layout=horizontal]:md:pt-[calc(theme('spacing.header')_*_1.8)] group-data-[layout=horizontal]:px-3 group-data-[layout=horizontal]:group-data-[navbar=hidden]:pt-[calc(theme('spacing.header')_*_0.9)] ">
       <div className="container-fluid group-data-[content=boxed]:max-w-boxed mx-auto my-16 flex flex-col gap-5">
@@ -184,6 +201,8 @@ const Products = () => {
               donateProducts={donateProducts}
               sort={sort}
               setSort={handleSortByPrice}
+              category={category}
+              setCategory={handleSelectCategory}
             />
           </div>
 

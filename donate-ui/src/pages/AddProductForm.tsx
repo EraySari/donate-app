@@ -37,7 +37,7 @@ interface Inputs {
 }
 
 interface AddProductFormProps {
-  type?: string; // opsiyonel olsun istiyorsan
+  type?: string;
   marketId?: number;
   onCloseModal?: () => void;
 }
