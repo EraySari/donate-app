@@ -19,17 +19,25 @@ interface CreateProductRequest {
 type GetAllProductsArgs = {
   page?: number;
   sort?: string;
+  categoryId?: number;
+};
+type GetAllDonatedProductsArgs = {
+  page?: number;
 };
 
 export const getAllProducts = createAsyncThunk<any, GetAllProductsArgs>(
   "getAllProducts",
-  async function ({ page = 0, sort }) {
+  async function ({ page = 0, sort, categoryId }) {
     let sortParam = "";
+    let categoryParam = "";
     if (sort) {
       sortParam = `&sort=${sort}`;
     }
-    console.log(`/products?page=${page}&sort=${sort}`);
-    const res = await axiosPrivate.get(`/products?page=${page}${sortParam}`);
+    if (categoryId) categoryParam = `/category/${categoryId}`;
+
+    const res = await axiosPrivate.get(
+      `/products${categoryParam}?page=${page}${sortParam}`
+    );
 
     return res.data;
   }
@@ -88,10 +96,6 @@ export const searchProduct = createAsyncThunk(
     return res.data;
   }
 );
-
-type GetAllDonatedProductsArgs = {
-  page?: number;
-};
 
 export const getAllDonatedProducts = createAsyncThunk<
   any,
