@@ -47,8 +47,8 @@ export default function ProductFilter({
   const { categories } = useAppSelector((state) => state.Category);
 
   return (
-    <div className={className ?? "sticky top-0"}>
-      <div className="rounded-2xl border border-gray-200 bg-white p-4 md:p-5 shadow-sm">
+    <div className={className ?? "sticky top-0 mb-6"}>
+      <div className="rounded-2xl border border-gray-200 bg-white p-4 md:p-5 shadow-sm ">
         <div className="mb-4 flex items-center justify-between">
           <h3 className="text-base font-semibold text-gray-800">Filters</h3>
           <button

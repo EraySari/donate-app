@@ -9,7 +9,7 @@ import {
 } from "../store/ProductStore/Products/thunks";
 import Button from "../ui/Button";
 import { hasPermission } from "../utils/permissionUtils";
-import { Box, X } from "lucide-react";
+import { Box, LayoutGrid, LayoutList, X } from "lucide-react";
 import { useSmoothLoader } from "../hooks/useSmoothLoader";
 import LoadingOverlay from "../ui/LoadingOverlay";
 
@@ -45,6 +45,7 @@ const Products = () => {
   const [sort, setSort] = useState<SortState>(null);
   const [donateProducts, setDonateProducts] = useState(false);
   const [category, setCategory] = useState<CategoryState | null>(null);
+  const [layout, setLayout] = useState<"list" | "grid">("grid");
 
   const handlePageClick = useCallback((index: number) => {
     setPageNumber(index);
@@ -190,8 +191,8 @@ const Products = () => {
   );
 
   return (
-    <div className="group-data-[sidebar-size=lg]:ltr:md:ml-vertical-menu group-data-[sidebar-size=lg]:rtl:md:mr-vertical-menu group-data-[sidebar-size=md]:ltr:ml-vertical-menu-md group-data-[sidebar-size=md]:rtl:mr-vertical-menu-md group-data-[sidebar-size=sm]:ltr:ml-vertical-menu-sm group-data-[sidebar-size=sm]:rtl:mr-vertical-menu-sm pt-[calc(theme('spacing.header')_*_1)] pb-[calc(theme('spacing.header')_*_0.8)] px-4 group-data-[navbar=bordered]:pt-[calc(theme('spacing.header')_*_1.3)] group-data-[navbar=hidden]:pt-0 group-data-[layout=horizontal]:mx-auto group-data-[layout=horizontal]:max-w-screen-2xl group-data-[layout=horizontal]:group-data-[sidebar-size=lg]:ltr:md:ml-auto group-data-[layout=horizontal]:group-data-[sidebar-size=lg]:rtl:md:mr-auto group-data-[layout=horizontal]:md:pt-[calc(theme('spacing.header')_*_1.8)] group-data-[layout=horizontal]:px-3 group-data-[layout=horizontal]:group-data-[navbar=hidden]:pt-[calc(theme('spacing.header')_*_0.9)] ">
-      <div className="container-fluid group-data-[content=boxed]:max-w-boxed mx-auto my-16 flex flex-col gap-5">
+    <div className=" pt-[calc(theme('spacing.header')_*_1)] pb-[calc(theme('spacing.header')_*_0.8)] px-4 group-data-[navbar=bordered]:pt-[calc(theme('spacing.header')_*_1.3)] group-data-[navbar=hidden]:pt-0 group-data-[layout=horizontal]:mx-auto group-data-[layout=horizontal]:max-w-screen-2xl group-data-[layout=horizontal]:group-data-[sidebar-size=lg]:ltr:md:ml-auto group-data-[layout=horizontal]:group-data-[sidebar-size=lg]:rtl:md:mr-auto group-data-[layout=horizontal]:md:pt-[calc(theme('spacing.header')_*_1.8)] group-data-[layout=horizontal]:px-3 group-data-[layout=horizontal]:group-data-[navbar=hidden]:pt-[calc(theme('spacing.header')_*_0.9)] ">
+      <div className="mx-auto my-16 flex flex-col gap-5">
         <div className="grid grid-cols-1 xl:grid-cols-12 gap-x-5">
           <div className="xl:col-span-3">
             <ProductFilter
@@ -241,9 +242,21 @@ const Products = () => {
                         </div>
                       ))}
                 </div>
+                <button
+                  onClick={() => {
+                    if (layout === "grid") {
+                      setLayout("list");
+                    } else {
+                      setLayout("grid");
+                    }
+                  }}
+                  className="cursor-pointer hover:text-gray-600 transition-colors duration-200 bg-white p-2 rounded-xl border border-gray-200 shadow-sm hover:bg-gray-50"
+                >
+                  {layout === "grid" ? <LayoutGrid /> : <LayoutList />}
+                </button>
               </div>
 
-              <ProductList products={showResults} />
+              <ProductList products={showResults} layout={layout} />
               <div className="flex gap-4 justify-center">
                 {Array.from({ length: totalPages }, (_, index) => {
                   return (

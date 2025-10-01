@@ -19,7 +19,9 @@ interface ProductItemProps {
   normalPrice: number;
   discountPrice: number;
   expiryDate: string;
+  layout: "grid" | "list";
 }
+
 const ProductItem: React.FC<ProductItemProps> = ({
   id,
   image,
@@ -27,6 +29,7 @@ const ProductItem: React.FC<ProductItemProps> = ({
   normalPrice,
   discountPrice,
   expiryDate,
+  layout,
 }) => {
   const [dropdown, setDropdown] = useState(false);
   const dispatch = useAppDispatch();
@@ -63,18 +66,18 @@ const ProductItem: React.FC<ProductItemProps> = ({
   };
 
   return (
-    <div className="py-4 shadow-md shadow-slate-200 border-0 mb-5 border-transparent md:group-[.gridView]:flex relative bg-gray-50 rounded-md">
-      <div className="relative group-[.gridView]:static p-6 group-[.gridView]:p-5">
-        <div className="group-[.gridView]:p-3 group-[.gridView]:bg-slate-100 group-[.gridView]:inline-block rounded-md ">
+    <div className="py-4 shadow-md shadow-slate-200 border-0 mb-5 border-transparent md:group-[.listView]:flex relative bg-gray-50 rounded-md hover:shadow-xl hover:-translate-y-1 transition-all hover:bg-gray-50/70">
+      <div className="relative group-[.listView]:static group-[.gridView]:p-6 group-[.listView]:p-5 ">
+        <div className=" group-[.listView]:bg-slate-100 group-[.listView]:inline-block rounded-md ">
           <img
             src="/public/images/donation.jpg"
-            className="group-[.gridView]:h-16"
+            className="group-[.listView]:h-34"
             alt="ürün1"
           />
         </div>
       </div>
-      <div className="p-5 !pt-0 md:group-[.gridView]:flex group-[.gridView]:!p-5 group-[.gridView]:gap-3 group-[.gridView]:grow">
-        <div className="group-[.gridView]:grow">
+      <div className="p-5 !pt-0 md:group-[.listView]:flex group-[.listView]:!p-5 group-[.listView]:gap-3 group-[.listView]:grow">
+        <div className="group-[.listView]:grow">
           <div>
             <h6 className="mb-1 truncate transition-all duration-200 ease-linear text-md hover:text-custom-500 line-clamp-2">
               {label}
@@ -97,7 +100,7 @@ const ProductItem: React.FC<ProductItemProps> = ({
             </div>
           </div>
         </div>
-        <div className="flex items-center gap-2 mt-4 group-[.gridView]:mt-0 group-[.gridView]:self-end">
+        <div className="flex items-center gap-2 mt-4 group-[.listView]:mt-0 group-[.listView]:self-end">
           {onCart ? (
             <QuantityInput id={id} />
           ) : (
