@@ -40,10 +40,6 @@ This project was developed as my graduation project, combining **real-world prob
 
 ### 👤 USER SIDE 
 
-- 🛒 **Product List**  
-  Products are listed with their prices and can be added to the cart. 
-![User Product List](donate-ui/./assets/user_ProductList.gif)
-
 - 🔍 **Elastic Search and Filters**  
   Users can search for specific products and, if desired, filter the results to show only those that are free.  
 ![Elastic Search and Filter](donate-ui/./assets/search_filter.gif)
