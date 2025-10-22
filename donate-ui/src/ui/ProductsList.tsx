@@ -24,6 +24,8 @@ interface ProductListProps {
 }
 
 const ProductList: React.FC<ProductListProps> = ({ products, layout }) => {
+  console.log(products);
+
   return (
     <div className={`group ${layout === "grid" ? "gridView" : "listView"}`}>
       <div
@@ -43,7 +45,7 @@ const ProductList: React.FC<ProductListProps> = ({ products, layout }) => {
               normalPrice={item.price}
               discountPrice={item.discountedPrice}
               expiryDate={item.expiryDate}
-              layout={layout}
+              quantity={item.quantity}
             />
           );
         })}

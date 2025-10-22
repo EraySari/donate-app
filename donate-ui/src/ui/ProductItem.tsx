@@ -19,7 +19,9 @@ interface ProductItemProps {
   normalPrice: number;
   discountPrice: number;
   expiryDate: string;
-  layout: "grid" | "list";
+  quantity: number;
+  description: string;
+  market: string;
 }
 
 const ProductItem: React.FC<ProductItemProps> = ({
@@ -29,7 +31,9 @@ const ProductItem: React.FC<ProductItemProps> = ({
   normalPrice,
   discountPrice,
   expiryDate,
-  layout,
+  quantity,
+  description,
+  market,
 }) => {
   const [dropdown, setDropdown] = useState(false);
   const dispatch = useAppDispatch();
@@ -79,7 +83,7 @@ const ProductItem: React.FC<ProductItemProps> = ({
       <div className="p-5 !pt-0 md:group-[.listView]:flex group-[.listView]:!p-5 group-[.listView]:gap-3 group-[.listView]:grow">
         <div className="group-[.listView]:grow">
           <div>
-            <h6 className="mb-1 truncate transition-all duration-200 ease-linear text-md hover:text-custom-500 line-clamp-2">
+            <h6 className="mb-1 truncate transition-all duration-200 ease-linear text-md hover:text-custom-500 line-clamp-2 group-[.listView]:text-lg">
               {label}
             </h6>
           </div>
