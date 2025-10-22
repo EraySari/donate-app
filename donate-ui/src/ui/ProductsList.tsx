@@ -20,13 +20,19 @@ interface ProductItem {
 
 interface ProductListProps {
   products: ProductItem[];
+  layout: "grid" | "list";
 }
 
-const ProductList: React.FC<ProductListProps> = ({ products }) => {
+const ProductList: React.FC<ProductListProps> = ({ products, layout }) => {
+  console.log(products);
+
   return (
-    <div className="2xl:col-span-9">
+    <div className={`group ${layout === "grid" ? "gridView" : "listView"}`}>
       <div
-        className="grid grid-cols-1 md:grid-cols-2 [&.gridView]:grid-cols-1 xl:grid-cols-4 group [&.gridView]:xl:grid-cols-1 gap-x-5"
+        className={`grid ${
+          layout === "grid" &&
+          "md:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4 gap-x-5"
+        } `}
         id="cardGridView"
       >
         {products.map((item) => {
@@ -39,6 +45,7 @@ const ProductList: React.FC<ProductListProps> = ({ products }) => {
               normalPrice={item.price}
               discountPrice={item.discountedPrice}
               expiryDate={item.expiryDate}
+              quantity={item.quantity}
             />
           );
         })}
